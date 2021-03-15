@@ -3,9 +3,9 @@
 import typing
 
 
-def safe_first_element(lst:
-                       typing.Sequence[typing.Any]) -> typing.Union[
-        typing.Any, NoneType]:
+def safe_first_element(lst: typing.Sequence[
+    typing.Any]) -> typing.Union[
+        typing.Any, None]:
     """ safe_first_element module """
     if lst:
         return lst[0]
