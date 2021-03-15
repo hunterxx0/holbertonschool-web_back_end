@@ -3,7 +3,7 @@
 import typing
 
 
-def mult(x):
+def mult(x: float) -> float:
     """ make_multiplier module """
     return (x * x)
 
