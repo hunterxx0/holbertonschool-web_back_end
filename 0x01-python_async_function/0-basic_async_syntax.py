@@ -4,8 +4,8 @@ import asyncio
 import random
 
 
-async def wait_random(max_delay=10.0):
+async def wait_random(max_delay: int=10) -> float:
     """ wait_random module """
-    a = random.uniform(0.0, max_delay)
+    a = random.uniform(0, max_delay)
     await asyncio.sleep(a)
     return a
