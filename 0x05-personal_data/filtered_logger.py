@@ -32,12 +32,9 @@ class RedactingFormatter(logging.Formatter):
                             super().format(record), self.SEPARATOR)
 
 
-def filter_datum(fields: List[str],
-                 redaction: str,
-                 message: str,
+def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
-    """Returns the log message obfuscated
-    """
+    """Returns the log message obfuscated"""
     for field in fields:
         message = re.sub(
             '(?<={}=)[^{}]*'.format(field, separator), redaction, message)
@@ -67,6 +64,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     return mysql.connector.connect(user=user, password=pw,
                                    host=host, database=db)
 
+
 def main():
     """retrieve all rows in the users table
     and display each row under a filtered format.
@@ -77,15 +75,16 @@ def main():
 
     result = cursor.fetchall()
     for data in result:
-        message = "name={}; email={}; phone={}; ssn={}; password={}; ip={}; last_login={}; user_agent={};".format(
-        data[0],
-        data[1],
-        data[2],
-        data[3],
-        data[4],
-        data[5],
-        data[6],
-        data[7])
+        message = "name={}; email={}; phone={}; ssn={}; password={}; \
+ip={}; last_login={}; user_agent={};".format(
+            data[0],
+            data[1],
+            data[2],
+            data[3],
+            data[4],
+            data[5],
+            data[6],
+            data[7])
         print(message)
         log_record = logging.LogRecord("my_logger", logging.INFO,
                                        None, None, message, None, None)
@@ -93,7 +92,6 @@ def main():
         formatter.format(log_record)
     cursor.close()
     db.close()
-
 
 
 if __name__ == "__main__":
