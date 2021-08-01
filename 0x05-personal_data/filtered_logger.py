@@ -85,7 +85,6 @@ ip={}; last_login={}; user_agent={};".format(
             data[5],
             data[6],
             data[7])
-        print(message)
         log_record = logging.LogRecord("my_logger", logging.INFO,
                                        None, None, message, None, None)
         formatter = RedactingFormatter(PII_FIELDS)
