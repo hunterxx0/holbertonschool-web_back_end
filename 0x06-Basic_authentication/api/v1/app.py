@@ -16,7 +16,7 @@ auth = None
 if getenv("AUTH_TYPE") == 'basic_auth':
     from api.v1.auth.basic_auth import BasicAuth
     auth = BasicAuth()
-else:
+elif getenv("AUTH_TYPE") == 'auth':
     from api.v1.auth.auth import Auth
     auth = Auth()
 
@@ -32,7 +32,7 @@ def before_request():
                                         '/api/v1/forbidden/']
                          ) is None:
         return
-    if (auth.authorization_header(request)) is None:
+    if auth.authorization_header(request) is None:
         abort(401)
     if auth.current_user(request) is None:
         abort(403)
