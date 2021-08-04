@@ -16,7 +16,7 @@ class BasicAuth(Auth):
 
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
-        """Returns the Base64 part of the Authorization 
+        """Returns the Base64 part of the Authorization
         header for a Basic Authentication
         """
         if (not authorization_header or
@@ -30,7 +30,7 @@ class BasicAuth(Auth):
     def decode_base64_authorization_header(self,
                                            base64_authorization_header: str
                                            ) -> str:
-        """Returns the decoded value of a Base64 string 
+        """Returns the decoded value of a Base64 string
         """
         if (not base64_authorization_header or
                 type(base64_authorization_header) != str):
