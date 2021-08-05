@@ -19,7 +19,11 @@ class Auth:
                 or len(excluded_paths) == 0 or len(path) == 0):
             return True
         for x in excluded_paths:
-            if x[:-1] in path:
+            if x[-1] == '/':
+                x = x[:-1]
+            if x[-1] == '*':
+                x = x[:-1]    
+            if x in path:
                 return False
         return True
 
