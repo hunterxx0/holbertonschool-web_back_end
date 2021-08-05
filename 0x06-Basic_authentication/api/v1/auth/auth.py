@@ -22,7 +22,7 @@ class Auth:
             if x[-1] == '/':
                 x = x[:-1]
             if x[-1] == '*':
-                x = x[:-1]    
+                x = x[:-1]
             if x in path:
                 return False
         return True
@@ -35,6 +35,6 @@ class Auth:
         return request.headers['Authorization']
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """
+        """ current_user
         """
         return None
