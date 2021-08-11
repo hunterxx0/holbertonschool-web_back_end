@@ -45,7 +45,7 @@ def login() -> str:
 def logout() -> str:
     """ DELETE /api/v1/auth_session/logout
     Return:
-      - Log out the User object    
+      - Log out the User object
     """
     from api.v1.app import auth
 
