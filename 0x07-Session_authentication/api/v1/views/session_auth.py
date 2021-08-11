@@ -8,9 +8,9 @@ from models.user import User
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
-    """ GET /api/v1/users
+    """ GET /api/v1/auth_session/login
     Return:
-      - list of all User objects JSON represented
+      - the Logged in User object JSON represented
     """
     email = request.form.get('email')
     if not email:
@@ -35,3 +35,20 @@ def login() -> str:
     resp = jsonify(user.to_json())
     resp.set_cookie('_my_session_id', sID)
     return resp
+
+
+@app_views.route(
+    '/auth_session/logout',
+    methods=['DELETE'],
+    strict_slashes=False
+)
+def logout() -> str:
+    """ DELETE /api/v1/auth_session/logout
+    Return:
+      - Log out the User object    
+    """
+    from api.v1.app import auth
+
+    if not auth.destroy_session(request):
+        return False, abort(404)
+    return jsonify({}), 200
