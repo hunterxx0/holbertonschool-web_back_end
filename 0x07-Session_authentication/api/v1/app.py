@@ -38,11 +38,13 @@ def before_request():
     if x is None:
         return
     if x:
+        if auth.current_user(request) is None:
+            abort(403)
+            
         if auth.authorization_header(request) is None:
             abort(401)
 
-        if auth.current_user(request) is None:
-            abort(403)
+        
         if not auth.authorization_header(request):
             if not auth.session_cookie(request):
                 abort(401)
