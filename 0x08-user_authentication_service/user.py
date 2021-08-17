@@ -7,6 +7,7 @@ from sqlalchemy import Column, Integer, String, VARCHAR
 
 Base = declarative_base()
 
+
 class User(Base):
     """
     SQLAlchemy model USER
