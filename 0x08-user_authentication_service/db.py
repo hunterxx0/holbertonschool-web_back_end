@@ -9,7 +9,7 @@ from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
 
 
-from user import Base, User
+from user import User
 
 
 class DB:
@@ -66,10 +66,11 @@ class DB:
         then commit changes to the database.
         """
         u = self.find_user_by(id=user_id)
-        atts = User.__table__.columns
+        atts = User.__table__.columns.keys()
         for k, v in kwargs.items():
             if k in atts:
                 setattr(u, k, v)
             else:
                 raise ValueError
         self._session.commit()
+        return None
