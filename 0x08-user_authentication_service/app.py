@@ -43,7 +43,7 @@ def login() -> str:
     """
     Login route
 
-    Logs a user in 
+    Logs a user in
 
     and sets the session id's cookie
     """
@@ -64,7 +64,7 @@ def logout() -> str:
     Logout route
 
     logs a User out
-    and removes its session ID 
+    and removes its session ID
     """
     s_id = request.cookies.get("session_id")
     if not s_id:
