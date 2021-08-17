@@ -9,7 +9,7 @@ from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
 
 
-from user import User
+from user import User, Base
 
 
 class DB:
