@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-USER module
+Auth module
 """
 import bcrypt
 from db import DB
@@ -24,7 +24,8 @@ def _generate_uuid() -> str:
 
 
 class Auth:
-    """Auth class to interact with the authentication database.
+    """
+    Auth class to interact with the authentication database.
     """
 
     def __init__(self):
@@ -77,12 +78,13 @@ class Auth:
         except NoResultFound:
             return None
 
-    def destroy_session(self, user_id: int):
+    def destroy_session(self, user_id: int) -> None:
         """
         Destroys user's session
         """
         try:
             self._db.update_user(user_id, session_id=None)
+            return None
         except Exception:
             return None
 
@@ -98,7 +100,7 @@ class Auth:
         except NoResultFound:
             raise ValueError
 
-    def update_password(self, reset_token: str, password: str):
+    def update_password(self, reset_token: str, password: str) -> None:
         """
         Update password
         """
@@ -108,5 +110,6 @@ class Auth:
             self._db.update_user(u.id,
                                  hashed_password=hpass,
                                  reset_token=None)
+            return None
         except NoResultFound:
             raise ValueError
