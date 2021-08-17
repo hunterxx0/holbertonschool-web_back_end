@@ -14,6 +14,10 @@ AUTH = Auth()
 def main() -> str:
     """
     main route
+
+    Returns:
+
+    a Welcome message
     """
     return jsonify({"message": "Bienvenue"})
 
@@ -22,6 +26,8 @@ def main() -> str:
 def reg_user() -> str:
     """
     reg_user route
+    Registers a new User
+    in the db
     """
     email = request.form.get('email')
     password = request.form.get('password')
@@ -36,6 +42,10 @@ def reg_user() -> str:
 def login() -> str:
     """
     Login route
+
+    Logs a user in 
+
+    and sets the session id's cookie
     """
     email = request.form.get('email')
     password = request.form.get('password')
@@ -52,6 +62,9 @@ def login() -> str:
 def logout() -> str:
     """
     Logout route
+
+    logs a User out
+    and removes its session ID 
     """
     s_id = request.cookies.get("session_id")
     if not s_id:
@@ -67,6 +80,10 @@ def logout() -> str:
 def profile() -> str:
     """
     Profile route
+
+    checks if the User have a session ID
+
+    and then provides its info
     """
     s_id = request.cookies.get("session_id")
     if not s_id:
@@ -82,6 +99,10 @@ def profile() -> str:
 def get_reset_password_token() -> str:
     """
     Get reset password token
+
+    checks if the email provided has a User
+
+    and provides a reset token
     """
     email = request.form.get('email')
     try:
@@ -95,6 +116,11 @@ def get_reset_password_token() -> str:
 def update_password() -> str:
     """
     Update password end-point
+
+    check if the user exists
+
+    and then updates it's password
+
     """
     email = request.form.get('email')
     npass = request.form.get('new_password')
