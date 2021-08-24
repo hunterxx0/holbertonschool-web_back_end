@@ -9,6 +9,7 @@ import unittest
 from unittest.mock import patch, Mock, PropertyMock
 from urllib.error import HTTPError
 
+
 class TestGithubOrgClient(unittest.TestCase):
     """
     Unit test CLass for GithubOrgClient.
