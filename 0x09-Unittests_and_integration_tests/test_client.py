@@ -39,6 +39,21 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(res._public_repos_url, payl)
 
     @patch('client.get_json', return_value=[{"name": "facebook"}])
+    def test_public_repos(self, mck):
+        """
+        Test that the method returns what it is supposed to.
+        """
+        ret = "https://api.github.com/orgs/facebook/repos"
+        with patch('client.GithubOrgClient._public_repos_url',
+                   new_callable=PropertyMock,
+                   return_value=ret) as pub:
+            clt = GithubOrgClient("facebook")
+            res = clt.public_repos()
+            self.assertEqual(res, ['facebook'])
+            pub.assert_called_once()
+            mck.assert_called_once()
+
+    @patch('client.get_json', return_value=[{"name": "facebook"}])
     def test_org(self, mck):
         """
         Test that the method returns what it is supposed to.
