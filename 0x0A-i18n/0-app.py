@@ -3,6 +3,7 @@
 FLask module
 """
 from flask import Flask, jsonify, request, render_template
+from os import getenv
 
 
 app = Flask(__name__)
