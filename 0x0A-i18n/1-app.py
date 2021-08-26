@@ -3,9 +3,13 @@
 FLask module
 """
 from flask import Flask, jsonify, request, abort, redirect
-
+from flask_babel import Babel
 
 app = Flask(__name__)
+babel = Babel(app)
+app.config['LANGUAGES'] = ["en", "fr"]
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 
 
 @app.route('/')
@@ -17,7 +21,7 @@ def root() -> str:
 
     a Welcome message
     """
-    return render_template('0-index.html')
+    return render_template('1-index.html')
 
 
 if __name__ == "__main__":
