@@ -2,7 +2,7 @@
 """
 FLask module
 """
-from flask import Flask, jsonify, request, abort, redirect
+from flask import Flask, jsonify, request, render_template
 from flask_babel import Babel
 
 app = Flask(__name__)
@@ -25,4 +25,6 @@ def root() -> str:
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
+    host = getenv("API_HOST", "0.0.0.0")
+    port = getenv("API_PORT", "5000")
+    app.run(host=host, port=port)
