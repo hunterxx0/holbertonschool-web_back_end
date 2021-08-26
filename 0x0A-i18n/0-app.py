@@ -2,7 +2,7 @@
 """
 FLask module
 """
-from flask import Flask, jsonify, request, abort, redirect
+from flask import Flask, jsonify, request, render_template
 
 
 app = Flask(__name__)
