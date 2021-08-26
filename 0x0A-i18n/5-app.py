@@ -31,10 +31,9 @@ app.config.from_object(Config)
 @app.before_request
 def before_request():
     """
-
+    find a user
     """
     g.user = get_user()
-    print(g.user)
 
 
 @babel.localeselector
