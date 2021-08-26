@@ -28,6 +28,7 @@ class Config:
 
 app.config.from_object(Config)
 
+
 @app.before_request
 def before_request():
     """
@@ -68,6 +69,7 @@ def get_user():
         return users.get(uID)
     except Exception:
         return None
+
 
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
