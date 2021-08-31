@@ -20,5 +20,6 @@ def get_page(url: str) -> str:
     redis.incr(key)
     return r.text
 
+
 res = get_page("http://slowwly.robertomurray.co.uk")
-print (res)
+print(res)
