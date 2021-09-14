@@ -12,7 +12,7 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
   } catch (error) {
     res.push({
       status: 'rejected',
-      value: error,
+      value: error.toString(),
     });
   }
   return res;
