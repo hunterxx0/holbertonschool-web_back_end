@@ -9,5 +9,6 @@ export default class Currency {
   [Symbol.toPrimitive](hint) {
     if (hint === 'string') return this._location;
     if (hint === 'number') return this._size;
+    return;
   }
 }
