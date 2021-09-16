@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 export default class Currency {
   constructor(size, location) {
     /* eslint-disable no-underscore-dangle */
@@ -9,6 +11,5 @@ export default class Currency {
   [Symbol.toPrimitive](hint) {
     if (hint === 'string') return this._location;
     if (hint === 'number') return this._size;
-    return;
   }
 }
