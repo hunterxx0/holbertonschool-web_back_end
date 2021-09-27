@@ -12,7 +12,7 @@ const app = http.createServer((req, res) => {
         res.end(dt);
       })
       .catch((error) => {
-        res.end(error.message);
+        res.end(error);
       });
   }
 });
