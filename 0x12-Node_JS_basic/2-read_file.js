@@ -5,7 +5,7 @@ function countStudents(path) {
   try {
     data = fs.readFileSync(path);
   } catch (error) {
-      throw Error('Cannot load the database');
+    throw Error('Cannot load the database');
   }
   const lines = data.toString().split('\n').filter((n) => n);
   console.log(`Number of students: ${lines.length - 1}`);
