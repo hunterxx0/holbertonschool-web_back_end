@@ -17,9 +17,6 @@ app.get('/students', (req, res) => {
     .catch((error) => {
       res.end(`This is the list of our students\n${error.message}`);
     });
-  }
-});
-
-app.listen(1245);
+  });
 
 module.exports = app;
