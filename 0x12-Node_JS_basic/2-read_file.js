@@ -8,15 +8,17 @@ function countStudents(path) {
     const lines = data.split('\n');
     console.log(`Number of students: ${lines.length - 1}`);
     const dct = {};
+    let key = null;
+    let std = null;
     for (let line = 1; line < lines.length; line += 1) {
-      const std = lines[line].split(',');
+      std = lines[line].split(',');
       if (std[3]) {
-        const key = dct[std[3]];
+        key = dct[std[3]];
         if (key) {
           key.push(std[0]);
+        } else {
+          dct[std[3]] = [std[0]];
         }
-      } else {
-        dct[std[3]] = [std[0]];
       }
     }
     for (const [key, value] of Object.entries(dct)) {
