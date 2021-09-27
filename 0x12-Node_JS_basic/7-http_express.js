@@ -1,6 +1,5 @@
-const http = require('http');
-const countStudents = require('./3-read_file_async');
 const express = require('express');
+const countStudents = require('./3-read_file_async');
 
 const app = express();
 
@@ -17,6 +16,6 @@ app.get('/students', (req, res) => {
     .catch((error) => {
       res.end(`This is the list of our students\n${error.message}`);
     });
-  });
+});
 
 module.exports = app;
