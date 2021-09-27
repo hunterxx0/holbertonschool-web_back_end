@@ -5,6 +5,7 @@ function countStudents(path) {
     fs.readFile(path, (err, data) => {
       if (err) {
         reject(Error('Cannot load the database'));
+        return;
       }
       const lines = data.toString().split('\n').filter((n) => n);
       console.log(`Number of students: ${lines.length - 1}`);
