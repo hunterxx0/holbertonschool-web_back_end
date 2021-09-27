@@ -9,6 +9,7 @@ const app = http.createServer((req, res) => {
   if (req.url === '/students') {
     countStudents(process.argv[2])
       .then((data) => {
+        data = 'This is the list of our students\n' + data;
         res.end(data);
       })
       .catch((err) => {
