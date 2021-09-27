@@ -9,6 +9,7 @@ function countStudents(path) {
       }
       const lines = data.toString().split('\n').filter((n) => n);
       let res = (`Number of students: ${lines.length - 1}\n`);
+      console.log(res.slice(0, -1));
       const dct = {};
       let key = null;
       let std = null;
@@ -24,9 +25,9 @@ function countStudents(path) {
         }
       }
       for (const [key, value] of Object.entries(dct)) {
+        console.log(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`)
         res += (`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}\n`);
       }
-      console.log(res.slice(0, -1));
       resolve(res);
     });
   });
